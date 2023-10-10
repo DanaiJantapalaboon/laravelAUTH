@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\CompanyInfo;
 use App\Models\User;
 
-class AdminController extends Controller
+class AdminController extends BaseController
 {
 
     //============= 1. Link ส่งค่าไปหน้า home.blade.php =============//
     public function home()
     {
         $pageTitle = "Home";
-        return view('admin/home', compact('pageTitle'));
+        $companyName = $this->getCompanyName();
+
+        return view('admin/home', compact('pageTitle', 'companyName'));
     }
 
 
@@ -21,7 +23,9 @@ class AdminController extends Controller
     public function user_profile()
     {
         $pageTitle = "My Profile";
-        return view('admin/user_profile', compact('pageTitle'));
+        $companyName = $this->getCompanyName();
+
+        return view('admin/user_profile', compact('pageTitle', 'companyName'));
     }
 
 
@@ -29,10 +33,11 @@ class AdminController extends Controller
     public function user_management()
     {
         $pageTitle = "User Management";
+        $companyName = $this->getCompanyName();
 
         // ดึง Fetch ตารางจ้าา
         $data['users'] = User::orderBy('id', 'DESC')->get();
-        return view('admin/user_management', compact('pageTitle'), $data);
+        return view('admin/user_management', compact('pageTitle', 'companyName'), $data);
     }
 
 
@@ -41,6 +46,8 @@ class AdminController extends Controller
     {
         $pageTitle = "Company Information";
         $CompanyInfo = CompanyInfo::firstOrNew();
-        return view('admin/company_info', compact('pageTitle', 'CompanyInfo'));
+        $companyName = $CompanyInfo->name;
+        
+        return view('admin/company_info', compact('pageTitle', 'CompanyInfo', 'companyName'));
     }
 }

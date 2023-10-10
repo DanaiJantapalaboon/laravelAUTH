@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class User_ProfileController extends Controller
 {
 
-
+    //============= 1. update my_profile หน้า user_profile =============//
     public function updateProfile(Request $request, $id)
     {
         $request->validate([
@@ -39,7 +39,7 @@ class User_ProfileController extends Controller
     }
 
 
-    //============= 2. update password หน้า Profile =============//
+    //============= 2. update password หน้า user_profile =============//
     public function updatePassword(Request $request, $id)
     {
         $request->validate([
@@ -56,12 +56,12 @@ class User_ProfileController extends Controller
         $user->password = Hash::make($request->newPassword);
         $user->save();
     
-        return redirect()->route('profile')->with('success', 'Password updated successfully.');
+        return redirect()->route('user_profile')->with('success', 'Password updated successfully.');
     }
 
 
 
-    //============= 3. delete account หน้า Profile =============//
+    //============= 3. delete account หน้า user_profile =============//
     public function deleteAccount(Request $request, $id)
     {
         $request->validate([
@@ -71,7 +71,7 @@ class User_ProfileController extends Controller
         $user = User::find($id);
     
         if (!Hash::check($request->deletePassword, $user->password)) {
-            return redirect()->route('profile')->with('passwordIncorrect', 'The password is incorrect, Please try again.');
+            return redirect()->route('user_profile')->with('passwordIncorrect', 'The password is incorrect, Please try again.');
         }
 
         $user->delete();

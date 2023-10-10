@@ -8,20 +8,23 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
  
-class AuthController extends Controller
+class AuthController extends BaseController
 {
 
-
+    //============= ไปหน้า register =============//
     public function register()
     {
-        return view('auth/register');
+        $companyName = $this->getCompanyName();
+        return view('auth/register', compact('companyName'));
     }
 
 
-    //============= ปุ่ม login =============//
+    //============= ไปหน้า login =============//
     public function login()
     {
-        return view('auth/login');
+        $companyName = $this->getCompanyName();
+
+        return view('auth/login', compact('companyName'));
     }
     
 

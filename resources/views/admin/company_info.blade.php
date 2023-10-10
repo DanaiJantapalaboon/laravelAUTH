@@ -27,20 +27,20 @@
                 <!-- Company Name -->
                 <div class="col-md-8 mb-2">
                     <label for="companyname">Company name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="companyname" id="companyname" value="{{ $CompanyInfo->name }}" placeholder="..." required>
+                    <input type="text" class="form-control" name="companyname" id="companyname" maxlength="100" value="{{ $CompanyInfo->name }}" placeholder="..." required>
                 </div>
 
                 <!-- Company Email -->
                 <div class="col-md-4 mb-2">
                     <label for="companyemail">Company Email / Business Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" name="companyemail" id="companyemail" value="{{ $CompanyInfo->email }}" placeholder="..." required>
+                    <input type="email" class="form-control" name="companyemail" id="companyemail" maxlength="100" value="{{ $CompanyInfo->email }}" placeholder="..." required>
                 </div>
             </div>
             <div class="row">
                 <!-- Company Address -->
                 <div class="col-md-8 mb-2">
                     <label for="companyaddress">Address <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="companyaddress" id="companyaddress" value="{{ $CompanyInfo->address }}" placeholder="..." required>
+                    <input type="text" class="form-control" name="companyaddress" id="companyaddress" maxlength="255" value="{{ $CompanyInfo->address }}" placeholder="..." required>
                 </div>
 
                 <!-- Company TaxID -->
