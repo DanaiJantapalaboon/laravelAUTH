@@ -1,0 +1,17 @@
+#admin_bg {
+    background-color: rgb(230, 230, 230);
+}
+
+.bg-primary {
+    background-color: #5783db !important;
+}
+
+.btn-primary {
+    background-color: #5783db;
+    border-color: #5783db;
+}
+
+.btn-primary:hover {
+    background-color: #3664c1;
+    border-color: #3664c1;
+}
