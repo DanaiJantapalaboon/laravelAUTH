@@ -16,7 +16,11 @@
             <h5 class="fw-bold py-3">{{ $pageTitle }}</h5>
         </div>
     </div>
-
+    @if (Auth::viaRemember())
+    <p>Welcome back! You are logged in via "Remember Me".</p>
+@else
+    <p>Welcome! You are logged in normally.</p>
+@endif
 
     {{-- ============= <script></script> tag below code ============= --}}
     @include('admin.includes.scripttag_below')

@@ -65,7 +65,7 @@
                         <!-- Remember me & Forgot Password -->
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="form-check mb-0">
-                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3">
+                                <input class="form-check-input me-2" type="checkbox" name="remember" id="form2Example3">
                                 <label class="form-check-label" for="form2Example3">Remember me</label>
                             </div>
                             <a href="#" class="text-body" data-bs-toggle="modal" data-bs-target="#exampleModal">Forgot password?</a>
