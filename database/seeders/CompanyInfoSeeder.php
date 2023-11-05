@@ -22,6 +22,7 @@ class CompanyInfoSeeder extends Seeder
             'tel_1' => '1234567890',
             'tel_2' => null,
             'fax' => null,
+            'logo' => null,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

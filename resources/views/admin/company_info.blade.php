@@ -75,7 +75,23 @@
                     <input type="tel" class="form-control" name="companyfax" id="companyfax" maxlength="10" value="{{ $CompanyInfo->fax }}" placeholder="...">
                 </div>
             </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-dark px-3 shadow-sm">SAVE</button>
+            </div>
+        </form>
+    </div>
 
+
+    {{-- ============= 2. Upload Company Logo หน้า User Management ============= --}}
+    <div class="container shadow-sm rounded bg-light p-4 mt-4 mb-4">
+        <p><span class="fw-bold">Upload Your Company Logo</span><br><span class="text-secondary">To update or upload your new company logo, The logo will show on all pages of your website.</span></p>
+        <form action="{{ route('upload-logo') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <input type="file" class="form-control" name="uploadLogo" accept=".jpeg, .jpg, .png, .gif" required>
+                </div>
+            </div>
             <div class="col-md-2">
                 <button type="submit" class="btn btn-dark px-3 shadow-sm">SAVE</button>
             </div>

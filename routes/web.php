@@ -82,3 +82,4 @@ Route::delete('/delete-users/{id}', [User_ManagementController::class, 'deleteUs
 
 //============= หน้า company_info =============//
 Route::post('/edit-company', [CompanyController::class, 'editCompany'])->name('edit-company');
+Route::post('/upload-logo', [CompanyController::class, 'uploadLogo'])->name('upload-logo');

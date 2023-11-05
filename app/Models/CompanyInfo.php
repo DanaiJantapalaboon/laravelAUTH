@@ -9,4 +9,5 @@ class CompanyInfo extends Model
 {
     use HasFactory;
     protected $table = 'companyinfo';
+    protected $fillable = ['logo'];
 }

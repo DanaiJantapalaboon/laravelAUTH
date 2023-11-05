@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('tel_1', 10);
             $table->string('tel_2', 10)->nullable();
             $table->string('fax', 10)->nullable();
+            $table->string('logo', 255)->nullable();
             $table->timestamps();
         });
     }

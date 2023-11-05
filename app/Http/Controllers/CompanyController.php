@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -32,6 +33,28 @@ class CompanyController extends Controller
         $CompanyInfo->tel_2 = $request->input('companyphone2');
         $CompanyInfo->fax = $request->input('companyfax');
         $CompanyInfo->save();
+
+        return back();
+    }
+
+
+    public function uploadLogo(Request $request) {
+
+        $request->validate([
+            'uploadLogo' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024',
+        ]);
+
+        $path = $request->file('uploadLogo')->store('uploaded_file/logo');
+
+        // Update the first row in the 'companyinfo' table with the new logo path
+        $company = CompanyInfo::first();
+
+        // ถ้ามี logo อยู่แล้วให้ลบออกแล้ว update ใหม่
+        if ($company->logo) {
+            Storage::disk()->delete($company->logo);
+        }
+
+        $company->update(['logo' => $path]);
 
         return back();
     }
