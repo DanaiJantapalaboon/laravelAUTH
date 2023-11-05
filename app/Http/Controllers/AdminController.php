@@ -14,8 +14,9 @@ class AdminController extends BaseController
     {
         $pageTitle = "Home";
         $companyName = $this->getCompanyName();
+        $companyLogo = $this->getCompanyLogo();
 
-        return view('admin/home', compact('pageTitle', 'companyName'));
+        return view('admin/home', compact('pageTitle', 'companyName', 'companyLogo'));
     }
 
 
@@ -24,8 +25,9 @@ class AdminController extends BaseController
     {
         $pageTitle = "My Profile";
         $companyName = $this->getCompanyName();
+        $companyLogo = $this->getCompanyLogo();
 
-        return view('admin/user_profile', compact('pageTitle', 'companyName'));
+        return view('admin/user_profile', compact('pageTitle', 'companyName', 'companyLogo'));
     }
 
 
@@ -34,10 +36,11 @@ class AdminController extends BaseController
     {
         $pageTitle = "User Management";
         $companyName = $this->getCompanyName();
+        $companyLogo = $this->getCompanyLogo();
 
         // ดึง Fetch ตารางจ้าา
         $data['users'] = User::orderBy('id', 'DESC')->get();
-        return view('admin/user_management', compact('pageTitle', 'companyName'), $data);
+        return view('admin/user_management', compact('pageTitle', 'companyName', 'companyLogo'), $data);
     }
 
 
@@ -46,8 +49,9 @@ class AdminController extends BaseController
     {
         $pageTitle = "Company Information";
         $CompanyInfo = CompanyInfo::firstOrNew();
-        $companyName = $CompanyInfo->name;
+        $companyName = $this->getCompanyName();
+        $companyLogo = $this->getCompanyLogo();
         
-        return view('admin/company_info', compact('pageTitle', 'CompanyInfo', 'companyName'));
+        return view('admin/company_info', compact('pageTitle', 'CompanyInfo', 'companyName', 'companyLogo'));
     }
 }

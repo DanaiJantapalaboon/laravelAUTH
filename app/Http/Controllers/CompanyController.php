@@ -44,16 +44,15 @@ class CompanyController extends Controller
             'uploadLogo' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024',
         ]);
 
-        $path = $request->file('uploadLogo')->store('uploaded_file/logo');
-
         // Update the first row in the 'companyinfo' table with the new logo path
         $company = CompanyInfo::first();
 
         // ถ้ามี logo อยู่แล้วให้ลบออกแล้ว update ใหม่
         if ($company->logo) {
-            Storage::disk()->delete($company->logo);
+            Storage::disk('public')->delete($company->logo);
         }
 
+        $path = $request->file('uploadLogo')->store('uploaded_file/logo', 'public');
         $company->update(['logo' => $path]);
 
         return back();

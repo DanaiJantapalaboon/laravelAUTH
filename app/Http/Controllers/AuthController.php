@@ -15,7 +15,9 @@ class AuthController extends BaseController
     public function register()
     {
         $companyName = $this->getCompanyName();
-        return view('auth/register', compact('companyName'));
+        $companyLogo = $this->getCompanyLogo();
+
+        return view('auth/register', compact('companyName', 'companyLogo'));
     }
 
 
@@ -23,8 +25,9 @@ class AuthController extends BaseController
     public function login()
     {
         $companyName = $this->getCompanyName();
+        $companyLogo = $this->getCompanyLogo();
 
-        return view('auth/login', compact('companyName'));
+        return view('auth/login', compact('companyName', 'companyLogo'));
     }
     
 

@@ -8,9 +8,18 @@ use Illuminate\Http\Request;
 class BaseController extends Controller
 {
 
-    //============= ส่ง company name ไปแสดงใน footer จ้าา =============//
+    //============= 1. ส่ง company name ไปแสดงใน footer จ้าา (ทำงานร่วมกับ AdminController) =============//
     protected function getCompanyName()
     {
         return CompanyInfo::select('name')->first()->name;
     }
+
+
+    //============= 2. ส่ง company logo ไปแสดงใน navbar จ้าา (ทำงานร่วมกับ AdminController) =============//
+    protected function getCompanyLogo()
+    {
+        return CompanyInfo::select('logo')->first()->logo;
+    }
+
+
 }
