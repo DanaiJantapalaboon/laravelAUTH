@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\User_ProfileController;
 use App\Http\Controllers\User_ManagementController;
+use App\Http\Controllers\WebpageController;
 use App\Http\Controllers\CompanyController;
 
 
@@ -22,12 +23,13 @@ use App\Http\Controllers\CompanyController;
 
 //============= Homepage หน้าแรก =============//
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 
 //============= check ถ้าไม่มีการ login =============//
 Route::group(['middleware' => 'guest'], function () {
+    Route::get('/admin', [AuthController::class, 'login'])->name('login');                          // ถ้ามีการกรอก url/admin แล้วยังไม่ login
     Route::get('/auth/register', [AuthController::class, 'register'])->name('register');            // route มาที่หน้า register.blade.php
     Route::post('/auth/register', [AuthController::class, 'registerAccount'])->name('register');    // post ลงใน db
     Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
@@ -37,6 +39,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 //============= check ถ้ามีการ login =============//
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/admin', [AdminController::class, 'home']);                                         // ถ้ามีการกรอก url/admin แต่ login แล้ว
     Route::get('/admin/home', [AdminController::class, 'home']);
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });
@@ -83,3 +86,7 @@ Route::delete('/delete-users/{id}', [User_ManagementController::class, 'deleteUs
 //============= หน้า company_info =============//
 Route::post('/edit-company', [CompanyController::class, 'editCompany'])->name('edit-company');
 Route::post('/upload-logo', [CompanyController::class, 'uploadLogo'])->name('upload-logo');
+
+
+//============= หน้าหลัก index =============//
+Route::get('/', [WebpageController::class, 'index'])->name('index');

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends BaseController
 {
 
-    //============= ไปหน้า register =============//
+    //============= 1. ไปหน้า register =============//
     public function register()
     {
         $companyName = $this->getCompanyName();
@@ -21,7 +21,7 @@ class AuthController extends BaseController
     }
 
 
-    //============= ไปหน้า login =============//
+    //============= 2. ไปหน้า login =============//
     public function login()
     {
         $companyName = $this->getCompanyName();
@@ -31,7 +31,7 @@ class AuthController extends BaseController
     }
     
 
-    //============= Authenticate ผ่านไปหน้า admin/home =============//
+    //============= 3. Authenticate ผ่านไปหน้า admin/home =============//
     public function authenticate(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
@@ -52,7 +52,7 @@ class AuthController extends BaseController
     }
 
     
-    //============= รับมาจากหน้า register =============//
+    //============= 4. รับมาจากหน้า register =============//
     public function registerAccount(Request $request)
     {
 
@@ -89,7 +89,7 @@ class AuthController extends BaseController
     }
 
 
-    //============= รับมาจาก modal forgot password =============//
+    //============= 5. รับมาจาก modal forgot password =============//
     public function resetPassword(Request $request)
     {
 
