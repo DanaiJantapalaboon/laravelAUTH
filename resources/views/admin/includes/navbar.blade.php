@@ -9,6 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link {{ request()->is('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('web_carousel') ? 'active' : '' }}" href="{{ route('web_carousel') }}">Carousel</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->is('company_info') ? 'active' : '' }}" href="{{ route('company_info') }}">Company Information</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->is('user_management') ? 'active' : '' }}" href="{{ route('user_management') }}">User Management</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->is('user_profile') ? 'active' : '' }}" href="{{ route('user_profile') }}">My Profile</a></li>

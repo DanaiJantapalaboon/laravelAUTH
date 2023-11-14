@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CompanyInfo;
+use App\Models\Carousel;
 use App\Models\User;
 
 class AdminController extends BaseController
@@ -20,7 +21,20 @@ class AdminController extends BaseController
     }
 
 
-    //============= 2. Link ส่งค่าไปหน้า user_profile.blade.php =============//
+    //============= 2. Link ส่งค่าไปหน้า web_carousel.blade.php =============//
+    public function web_carousel()
+    {
+        $pageTitle = "Carousel";
+        $companyName = $this->getCompanyName();
+        $companyLogo = $this->getCompanyLogo();
+
+        // ดึง Fetch ตารางจ้าา
+        $data['carousels'] = Carousel::orderBy('id', 'DESC')->get();
+        return view('admin/web_carousel', compact('pageTitle', 'companyName', 'companyLogo'), $data);
+    }
+
+
+    //============= 3. Link ส่งค่าไปหน้า user_profile.blade.php =============//
     public function user_profile()
     {
         $pageTitle = "My Profile";
@@ -31,7 +45,7 @@ class AdminController extends BaseController
     }
 
 
-    //============= 3. Link ส่งค่าไปหน้า user_management.blade.php =============//
+    //============= 4. Link ส่งค่าไปหน้า user_management.blade.php =============//
     public function user_management()
     {
         $pageTitle = "User Management";
@@ -44,7 +58,7 @@ class AdminController extends BaseController
     }
 
 
-    //============= 4. Link ส่งค่าไปหน้า company_info.blade.php =============//
+    //============= 5. Link ส่งค่าไปหน้า company_info.blade.php =============//
     public function company_info()
     {
         $pageTitle = "Company Information";

@@ -6,7 +6,7 @@ use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class CompanyController extends Controller
+class Company_ProfileController extends Controller
 {
     public function editCompany(Request $request) {
 

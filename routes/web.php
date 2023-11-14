@@ -1,13 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WebpageController;
 use App\Http\Controllers\User_ProfileController;
 use App\Http\Controllers\User_ManagementController;
-use App\Http\Controllers\WebpageController;
-use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\Company_ProfileController;
+use App\Http\Controllers\Webpage_CarouselController;
 
 
 /*
@@ -72,9 +73,14 @@ Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('
 
 //============= navbar link =============//
 Route::get('/home', [AdminController::class, 'home'])->name('home');
+Route::get('/web_carousel', [AdminController::class, 'web_carousel'])->name('web_carousel');
 Route::get('/company_info', [AdminController::class, 'company_info'])->name('company_info');
 Route::get('/user_profile', [AdminController::class, 'user_profile'])->name('user_profile');
 Route::get('/user_management', [AdminController::class, 'user_management'])->name('user_management');
+
+
+//============= หน้า carousel =============//
+Route::post('/add-carousels', [Webpage_CarouselController::class, 'addCarousels'])->name('add-carousels');
 
 
 //============= หน้า user_management =============//
@@ -84,8 +90,8 @@ Route::delete('/delete-users/{id}', [User_ManagementController::class, 'deleteUs
 
 
 //============= หน้า company_info =============//
-Route::post('/edit-company', [CompanyController::class, 'editCompany'])->name('edit-company');
-Route::post('/upload-logo', [CompanyController::class, 'uploadLogo'])->name('upload-logo');
+Route::post('/edit-company', [Company_ProfileController::class, 'editCompany'])->name('edit-company');
+Route::post('/upload-logo', [Company_ProfileController::class, 'uploadLogo'])->name('upload-logo');
 
 
 //============= หน้าหลัก index =============//

@@ -95,18 +95,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $all_users)
+                @foreach ($users as $all_user)
                     <tr>
                         <td></td>
-                        <td>{{ $all_users->firstname }}</td>
-                        <td>{{ $all_users->lastname }}</td>
-                        <td>{{ $all_users->position }}</td>
-                        <td>{{ $all_users->email }}</td>
+                        <td>{{ $all_user->firstname }}</td>
+                        <td>{{ $all_user->lastname }}</td>
+                        <td>{{ $all_user->position }}</td>
+                        <td>{{ $all_user->email }}</td>
                         <td>
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $all_users->id }}"><i class="fas fa-edit"></i></button>
-                                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $all_users->id }}"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $all_user->id }}"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $all_user->id }}"><i class="fas fa-trash"></i></button>
                                 </div>
                             </div>
                         </td>
@@ -114,31 +114,31 @@
 
 
                     <!-- Modal Edit Users -->
-                    <div class="modal fade" id="editModal{{ $all_users->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editModal{{ $all_user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header bg-primary">
                                     <h5 class="modal-title text-light" id="exampleModalLabel">Edit User's Account ?</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form action="{{ route('edit-users', $all_users->id) }}" method="POST">
+                                <form action="{{ route('edit-users', $all_user->id) }}" method="POST">
                                     @csrf
                                     <div class="modal-body">
                                         <div class="mb-0">
                                             <label for="editFirstname">Firstname <span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" name="editFirstname" id="editFirstname" value="{{ $all_users->firstname }}" placeholder="Firstname" required>
+                                            <input type="text" class="form-control" name="editFirstname" id="editFirstname" value="{{ $all_user->firstname }}" placeholder="Firstname" required>
                                         </div>
                                         <div class="mb-0 mt-2">
                                             <label for="editLastname">Lastname <span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" name="editLastname" id="editLastname" value="{{ $all_users->lastname }}" placeholder="Lastname" required>
+                                            <input type="text" class="form-control" name="editLastname" id="editLastname" value="{{ $all_user->lastname }}" placeholder="Lastname" required>
                                         </div>
                                         <div class="mb-0 mt-2">
                                             <label for="editPosition">Position <span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" name="editPosition" id="editPosition" value="{{ $all_users->position }}" placeholder="Position" required>
+                                            <input type="text" class="form-control" name="editPosition" id="editPosition" value="{{ $all_user->position }}" placeholder="Position" required>
                                         </div>
                                         <div class="mb-0 mt-2">
                                             <label for="editEmail">Email</label>
-                                            <input type="email" class="form-control" id="editEmail" aria-describedby="emailHelp" value="{{ $all_users->email }}" disabled>
+                                            <input type="email" class="form-control" id="editEmail" aria-describedby="emailHelp" value="{{ $all_user->email }}" disabled>
                                             <small id="emailHelp" class="form-text text-muted">To change an email, Please logged in to this account to proceed.</small>
                                         </div>
                                     </div>
@@ -153,7 +153,7 @@
 
 
                     <!-- Modal Delete Users -->
-                    <div class="modal fade" id="deleteModal{{ $all_users->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteModal{{ $all_user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header bg-danger">
@@ -162,12 +162,12 @@
                                 </div>
                                 <div class="modal-body">
                                     Please confirm to delete this account ? <br><br>
-                                    Name : {{ $all_users->firstname. ' ' .$all_users->lastname}} <br>
-                                    Email : {{ $all_users->email }} <br>
-                                    Position : {{ $all_users->position }}
+                                    Name : {{ $all_user->firstname. ' ' .$all_user->lastname}} <br>
+                                    Email : {{ $all_user->email }} <br>
+                                    Position : {{ $all_user->position }}
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{{ route('delete-users', $all_users->id) }}" method="POST">
+                                    <form action="{{ route('delete-users', $all_user->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
