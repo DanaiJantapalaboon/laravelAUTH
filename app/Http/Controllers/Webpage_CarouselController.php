@@ -13,8 +13,8 @@ class Webpage_CarouselController extends Controller
     public function addCarousels(request $request)
     {
         $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
+            'title' => 'nullable|string',
+            'description' => 'nullable|string',
             'uploadCarousel' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2080',
             'addedby' => 'required|string'
         ]);
@@ -31,14 +31,24 @@ class Webpage_CarouselController extends Controller
     }
 
 
-
-
-
     //============= 2. Edit Carousel รับมาจากหน้า Carousel =============//
+    public function editCarousels(request $request, $id)
+    {
+        $request->validate([
+            'editTitle' => 'nullable|string',
+            'editDescription' => 'nullable|string',
+            'editedby' => 'required|string'
+        ]);
 
+        $carousel = Carousel::find($id);
 
+        $carousel->title = $request->editTitle;
+        $carousel->description = $request->editDescription;
+        $carousel->added_by = $request->editedby;
+        $carousel->save();
 
-
+        return back();
+    }
 
 
     //============= 3. Delete Carousel รับมาจากหน้า Carousel =============//

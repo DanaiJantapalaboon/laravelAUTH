@@ -67,7 +67,6 @@ class User_ManagementController extends Controller
         
     }
 
-    
 
     //============= 3. Delete Users รับมาจากหน้า User Management =============//
     public function deleteUsers($id) {

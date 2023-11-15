@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carousel;
 use Illuminate\Http\Request;
 
 class WebpageController extends BaseController
@@ -14,6 +15,9 @@ class WebpageController extends BaseController
         $companyName = $this->getCompanyName();
         $companyLogo = $this->getCompanyLogo();
 
-        return view('index', compact('pageTitle', 'companyName', 'companyLogo'));
+        // fetch all ไปแสดง carousel
+        $carousel = Carousel::all();
+
+        return view('index', compact('pageTitle', 'companyName', 'companyLogo', 'carousel'));
     }
 }

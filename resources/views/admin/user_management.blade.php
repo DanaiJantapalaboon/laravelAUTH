@@ -126,15 +126,15 @@
                                     <div class="modal-body">
                                         <div class="mb-0">
                                             <label for="editFirstname">Firstname <span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" name="editFirstname" id="editFirstname" value="{{ $all_user->firstname }}" placeholder="Firstname" required>
+                                            <input type="text" class="form-control" name="editFirstname" id="editFirstname" value="{{ $all_user->firstname }}" placeholder="..." required>
                                         </div>
                                         <div class="mb-0 mt-2">
                                             <label for="editLastname">Lastname <span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" name="editLastname" id="editLastname" value="{{ $all_user->lastname }}" placeholder="Lastname" required>
+                                            <input type="text" class="form-control" name="editLastname" id="editLastname" value="{{ $all_user->lastname }}" placeholder="..." required>
                                         </div>
                                         <div class="mb-0 mt-2">
                                             <label for="editPosition">Position <span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" name="editPosition" id="editPosition" value="{{ $all_user->position }}" placeholder="Position" required>
+                                            <input type="text" class="form-control" name="editPosition" id="editPosition" value="{{ $all_user->position }}" placeholder="..." required>
                                         </div>
                                         <div class="mb-0 mt-2">
                                             <label for="editEmail">Email</label>

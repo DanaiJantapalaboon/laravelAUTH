@@ -27,18 +27,16 @@
                 <input type="hidden" name="addedby" value="{{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}" readonly>
                 <!-- Input Title -->
                 <div class="col-md-4 mb-2">
-                    <label for="title">Title <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="title" id="title" maxlength="100" placeholder="..." required>
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" name="title" id="title" maxlength="100" placeholder="...">
                 </div>
 
                 <!-- Input Description -->
                 <div class="col-md-8 mb-2">
-                    <label for="description">Description <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="description" id="description" maxlength="255" placeholder="..." required>
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" name="description" id="description" maxlength="255" placeholder="...">
                 </div>
             </div>
-
-
             <div class="row">
                 <!-- Input Carousel -->
                 <div class="col-md-4 mb-3">
@@ -74,7 +72,7 @@
                         <td></td>
                         <td>{{ $all_carousel->title }}</td>
                         <td>{{ $all_carousel->description }}</td>
-                        <td><a href="{{ asset('storage/' . $all_carousel->image) }}" target="_blank">View</a></td>
+                        <td><a href="" data-bs-toggle="modal" data-bs-target="#viewModal{{ $all_carousel->id }}">View</a></td>
                         <td>{{ $all_carousel->added_by }}</td>
                         <td>
                             <div class="input-group">
@@ -87,34 +85,51 @@
                     </tr>
 
 
+                    <!-- View Modal -->
+                    <div class="modal fade" id="viewModal{{ $all_carousel->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header bg-info">
+                                    <h5 class="modal-title text-light" id="exampleModalLabel">View Carousel Image</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <img src="{{ asset('storage/' . $all_carousel->image) }}" class="w-50" alt={{ $all_carousel->title }}>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <!-- Modal Edit Carousel -->
-                    {{-- <div class="modal fade" id="editModal{{ $all_carousel->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editModal{{ $all_carousel->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header bg-primary">
-                                    <h5 class="modal-title text-light" id="exampleModalLabel">Edit User's Account ?</h5>
+                                    <h5 class="modal-title text-light" id="exampleModalLabel">Edit Carousel's Image ?</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form action="{{ route('edit-carousel', $all_carousel->id) }}" method="POST">
                                     @csrf
                                     <div class="modal-body">
+
+                                        <!-- Input Title -->
                                         <div class="mb-0">
-                                            <label for="editFirstname">Firstname <span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" name="editFirstname" id="editFirstname" value="{{ $all_users->firstname }}" placeholder="Firstname" required>
+                                            <input type="hidden" name="editedby" value="{{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}" readonly>
+                                            <label for="editTitle">Title</label>
+                                            <input type="text" class="form-control" name="editTitle" id="editTitle" value="{{ $all_carousel->title }}" placeholder="...">
                                         </div>
+
+                                        <!-- Edit Description -->
                                         <div class="mb-0 mt-2">
-                                            <label for="editLastname">Lastname <span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" name="editLastname" id="editLastname" value="{{ $all_users->lastname }}" placeholder="Lastname" required>
+                                            <label for="editDescription">Description</label>
+                                            <input type="text" class="form-control" name="editDescription" id="editDescription" aria-describedby="carouselHelp" value="{{ $all_carousel->description }}" placeholder="...">
+                                            <small id="carouselHelp" class="form-text text-muted">To change an image, Please delete and add carousel again.</small>
                                         </div>
-                                        <div class="mb-0 mt-2">
-                                            <label for="editPosition">Position <span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" name="editPosition" id="editPosition" value="{{ $all_users->position }}" placeholder="Position" required>
-                                        </div>
-                                        <div class="mb-0 mt-2">
-                                            <label for="editEmail">Email</label>
-                                            <input type="email" class="form-control" id="editEmail" aria-describedby="emailHelp" value="{{ $all_users->email }}" disabled>
-                                            <small id="emailHelp" class="form-text text-muted">To change an email, Please logged in to this account to proceed.</small>
-                                        </div>
+                                        
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
@@ -123,7 +138,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>--}}
+                    </div>
 
 
                     <!-- Modal Delete Carousel -->
