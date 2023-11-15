@@ -123,7 +123,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
 
 
                     <!-- Modal Delete Carousel -->
@@ -140,7 +140,7 @@
                                     Description : {{ $all_carousel->description }}
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{{ route('delete-users', $all_users->id) }}" method="POST">
+                                    <form action="{{ route('delete-carousel', $all_carousel->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
@@ -149,7 +149,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 @endforeach
             </tbody>
         </table>

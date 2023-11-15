@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carousel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Webpage_CarouselController extends Controller
 {
@@ -41,4 +42,13 @@ class Webpage_CarouselController extends Controller
 
 
     //============= 3. Delete Carousel รับมาจากหน้า Carousel =============//
+    public function deleteCarousels($id)
+    {
+        $carousel = Carousel::find($id);
+
+        // unlink image and delete from db
+        Storage::disk('public')->delete($carousel->image);
+        $carousel->delete();
+        return back();
+    }
 }

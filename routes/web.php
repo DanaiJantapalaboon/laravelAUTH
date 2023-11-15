@@ -81,6 +81,7 @@ Route::get('/user_management', [AdminController::class, 'user_management'])->nam
 
 //============= หน้า carousel =============//
 Route::post('/add-carousels', [Webpage_CarouselController::class, 'addCarousels'])->name('add-carousels');
+Route::delete('/delete-carousel/{id}', [Webpage_CarouselController::class, 'deleteCarousels'])->name('delete-carousel');
 
 
 //============= หน้า user_management =============//
