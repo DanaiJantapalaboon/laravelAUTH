@@ -37,16 +37,21 @@ class Webpage_CarouselController extends Controller
         $request->validate([
             'editTitle' => 'nullable|string',
             'editDescription' => 'nullable|string',
+            'editCarousel' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2080',
             'editedby' => 'required|string'
         ]);
 
         $carousel = Carousel::find($id);
-
         $carousel->title = $request->editTitle;
         $carousel->description = $request->editDescription;
         $carousel->added_by = $request->editedby;
-        $carousel->save();
 
+        if ($request->editCarousel) {
+            Storage::disk('public')->delete($carousel->image);
+            $carousel->image = $request->file('editCarousel')->store('uploaded_file/carousel', 'public');
+        }
+
+        $carousel->save();
         return back();
     }
 

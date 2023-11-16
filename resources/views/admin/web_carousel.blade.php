@@ -112,7 +112,7 @@
                                     <h5 class="modal-title text-light" id="exampleModalLabel">Edit Carousel's Image ?</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form action="{{ route('edit-carousel', $all_carousel->id) }}" method="POST">
+                                <form action="{{ route('edit-carousel', $all_carousel->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="modal-body">
 
@@ -126,8 +126,13 @@
                                         <!-- Edit Description -->
                                         <div class="mb-0 mt-2">
                                             <label for="editDescription">Description</label>
-                                            <input type="text" class="form-control" name="editDescription" id="editDescription" aria-describedby="carouselHelp" value="{{ $all_carousel->description }}" placeholder="...">
-                                            <small id="carouselHelp" class="form-text text-muted">To change an image, Please delete and add carousel again.</small>
+                                            <input type="text" class="form-control" name="editDescription" id="editDescription" value="{{ $all_carousel->description }}" placeholder="...">
+                                        </div>
+
+                                        <!-- Edit Carousel -->
+                                        <div class="mb-0 mt-2">
+                                            <label for="editCarousel">Upload Carousel (Recommended .jpeg, .jpg, .png, .gif, .webp)</label>
+                                            <input type="file" class="form-control" name="editCarousel" id="editCarousel" accept=".jpeg, .jpg, .png, .gif, .webp">
                                         </div>
                                         
                                     </div>

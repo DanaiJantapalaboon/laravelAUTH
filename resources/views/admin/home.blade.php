@@ -16,6 +16,9 @@
             <h5 class="fw-bold py-3">{{ $pageTitle }}</h5>
         </div>
     </div>
+
+    {{-- https://codepen.io/lesliesamafful/pen/oNXgmBG --}}
+
     @if (Auth::viaRemember())
     <p>Welcome back! You are logged in via "Remember Me".</p>
 @else
