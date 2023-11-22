@@ -3,6 +3,17 @@
 <head>
     <title>{{ $pageTitle }}</title>
     @include('dependency.cdn')
+
+    <style>
+        .carousel-item {
+            height: 512px;
+        }
+        .carousel-indicators [data-bs-target] {
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+        }
+    </style>
 </head>
 <body>
 
