@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'lastname' => 'Jantapalaboon',
             'position' => 'FullStack Web Developer',
             'email' => 'danai.athlon@gmail.com',
+            'role' => 'admin',
             'password' => Hash::make(1234),
             'created_at' => now(),
             'updated_at' => now()
