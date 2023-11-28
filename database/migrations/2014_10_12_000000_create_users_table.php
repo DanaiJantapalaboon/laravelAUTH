@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('lastname', 100);
             $table->string('position', 100);
             $table->string('email')->unique();
-            $table->string('role', 50);
+            $table->string('role', 50)->default("Admin");
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
