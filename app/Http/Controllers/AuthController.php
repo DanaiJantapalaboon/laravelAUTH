@@ -2,9 +2,11 @@
  
 namespace App\Http\Controllers;
  
+use PDOException;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
  
@@ -69,12 +71,7 @@ class AuthController extends BaseController
             'password' => 'required|min:4|confirmed'
         ]);
 
-        $user = User::where('email', $request->email)->first();
-
-        if ($user) {
-            return back()->with('error', 'This email has already registered, Please try a difference email.');
-
-        } else {
+        try {
             $user = new User();
     
             $user->firstname = $request->firstname;
@@ -85,7 +82,32 @@ class AuthController extends BaseController
             $user->save();
 
             return back()->with('success', 'Account created successfully, Please ');
+        
+        } catch (QueryException) {
+            // ในกรณีที่ต้องการแสดง sql error
+            // return back()->with('error', $e->getMessage());
+            return back()->with('error', 'This email has already registered, Please try a difference email.');
+
         }
+
+        // ในกรณีที่ต้องการ check where ก่อนแล้ว return error
+        // $user = User::where('email', $request->email)->first();
+
+        // if ($user) {
+        //     return back()->with('error', 'This email has already registered, Please try a difference email.');
+
+        // } else {
+        //     $user = new User();
+    
+        //     $user->firstname = $request->firstname;
+        //     $user->lastname = $request->lastname;
+        //     $user->position = $request->position;
+        //     $user->email = $request->email;
+        //     $user->password = Hash::make($request->password);
+        //     $user->save();
+
+        //     return back()->with('success', 'Account created successfully, Please ');
+        // }
     }
 
 

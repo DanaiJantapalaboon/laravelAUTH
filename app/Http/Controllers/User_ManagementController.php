@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\QueryException;
 
 class User_ManagementController extends Controller
 {
@@ -27,15 +28,9 @@ class User_ManagementController extends Controller
             'password' => 'required|min:4|confirmed'
         ]);
 
-        // check email ซ้ำ จ้าา
-        $user = User::where('email', $request->email)->first();
-
-        if ($user) {
-            return back()->with('error', 'This email has already registered, Please try a difference email.');
-
-        } else {
+        try {
             $user = new User();
-    
+
             $user->firstname = $request->firstname;
             $user->lastname = $request->lastname;
             $user->position = $request->position;
@@ -43,8 +38,28 @@ class User_ManagementController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
 
-            return back();
+        } catch (QueryException) {
+            return back()->with('error', 'This email has already registered, Please try a difference email.');
         }
+
+        // check email ซ้ำ จ้าา
+        // $user = User::where('email', $request->email)->first();
+
+        // if ($user) {
+        //     return back()->with('error', 'This email has already registered, Please try a difference email.');
+
+        // } else {
+        //     $user = new User();
+    
+        //     $user->firstname = $request->firstname;
+        //     $user->lastname = $request->lastname;
+        //     $user->position = $request->position;
+        //     $user->email = $request->email;
+        //     $user->password = Hash::make($request->password);
+        //     $user->save();
+
+        //     return back();
+        // }
     }
 
 
