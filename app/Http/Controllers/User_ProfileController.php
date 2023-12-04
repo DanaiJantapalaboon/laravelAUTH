@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\QueryException;
 
 class User_ProfileController extends Controller
 {
@@ -16,30 +17,40 @@ class User_ProfileController extends Controller
         $request->validate([
             'editFirstname' => 'required|string',
             'editLastname' => 'required|string',
-            'editPosition' => 'required|string',
-            'editEmail' => 'required|email'
+            'editPosition' => 'required|string'
         ]);
-
-        $user = User::where('email', $request->editEmail)->first();
-        
-        if ($user) {
-            return back()->with('error', 'This email has already registered, Please try a difference email.');
-
-        } else {
 
             $user = User::find($id);
             $user->firstname = $request->input('editFirstname');
             $user->lastname = $request->input('editLastname');
             $user->position = $request->input('editPosition');
-            $user->email = $request->input('editEmail');
             $user->save();
 
             return back();
-        }
     }
 
 
     //============= 2. update password หน้า user_profile =============//
+    public function updateEmail(Request $request, $id)
+    {
+        $request->validate([
+            'editEmail' => 'required|email'
+        ]);
+
+        try {
+            $user = User::find($id);
+            $user->email = $request->input('editEmail');
+            $user->save();
+
+            return back();
+
+        } catch (QueryException) {
+            return back()->withErrors(['emailError' => 'This email has already registered, Please try a difference email.']);
+        }
+    }
+
+
+    //============= 3. update password หน้า user_profile =============//
     public function updatePassword(Request $request, $id)
     {
         $request->validate([
@@ -48,7 +59,6 @@ class User_ProfileController extends Controller
         ]);
     
         $user = User::find($id);
-            
         if (!Hash::check($request->currentPassword, $user->password)) {
             return back()->withErrors(['currentPassword' => 'The current password is incorrect, Please try again.']);
         }
@@ -61,7 +71,7 @@ class User_ProfileController extends Controller
 
 
 
-    //============= 3. delete account หน้า user_profile =============//
+    //============= 4. delete account หน้า user_profile =============//
     public function deleteAccount(Request $request, $id)
     {
         $request->validate([

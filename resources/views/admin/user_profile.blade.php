@@ -20,10 +20,7 @@
 
     {{-- ============= 1. update Personal Info หน้า Profile ============= --}}
     <div class="container shadow-sm rounded bg-light p-4 mt-4">
-        <p><span class="fw-bold">Profile Information</span><br><span class="text-secondary">Update your account's profile information and email address.</span></p>
-        @if(session('error'))
-            <div class="alert alert-danger text-danger text-center">{{ session('error') }}</div>
-        @endif
+        <p><span class="fw-bold">1. Profile Information</span><br><span class="text-secondary">Update your account's profile information.</span></p>
         <form action="{{ route('update-profile', Auth::user()->id) }}" method="POST">
             @csrf
             <div class="row">
@@ -40,10 +37,26 @@
                     <input type="text" class="form-control" name="editPosition" id="editPosition" value="{{ Auth::user()->position }}" required>
                 </div>
             </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-dark px-3 shadow-sm">SAVE</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    {{-- ============= 2. update Email หน้า Profile ============= --}}
+    <div class="container shadow-sm rounded bg-light p-4 mt-4">
+        <p><span class="fw-bold">2. Change Email</span><br><span class="text-secondary">Update or change of your email address.</span></p>
+        <form action="{{ route('update-email', Auth::user()->id) }}" method="POST">
+            @csrf
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="editEmail" class="form-label">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" name="editEmail" id="editEmail" value="{{ Auth::user()->email }}" required>
+                    <input type="email" class="form-control @error('emailError') is-invalid @enderror" name="editEmail" id="editEmail" value="{{ Auth::user()->email }}" required>
+                    @error('emailError')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
 
@@ -55,9 +68,9 @@
 
 
     
-    {{-- ============= 2. update password หน้า Profile ============= --}}
+    {{-- ============= 3. update password หน้า Profile ============= --}}
     <div class="container shadow-sm rounded bg-light p-4 mt-4">
-        <p><span class="fw-bold">Update Password</span><br><span class="text-secondary">Ensure your account is using a long, random password to stay secure.</span></p>
+        <p><span class="fw-bold">3. Update Password</span><br><span class="text-secondary">Ensure your account is using a long, random password to stay secure.</span></p>
         @if(session('success'))
             <div class="alert alert-success text-success text-center">{{ session('success') }}</div>
         @endif
@@ -89,13 +102,13 @@
 
 
 
-    {{-- ============= 3. delete account หน้า Profile ============= --}}
+    {{-- ============= 4. delete account หน้า Profile ============= --}}
     <div class="container shadow-sm rounded bg-light p-4 mt-4 mb-4">
         <div class="col-md-6">
             @if(session('passwordIncorrect'))
                 <div class="alert alert-danger text-center text-danger">{{ session('passwordIncorrect') }}</div>
             @endif
-            <p><span class="fw-bold">Delete Account</span><br><span class="text-secondary">Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.</span></p>
+            <p><span class="fw-bold">4. Delete Account</span><br><span class="text-secondary">Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.</span></p>
         </div>
         <button type="submit" class="btn btn-danger px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">DELETE ACCOUNT</button>
     </div>

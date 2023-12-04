@@ -55,19 +55,11 @@ Route::get('/auth', function () {
 });
 
 
-//============= edit Profile =============//
+//============= หน้า My Profile =============//
 Route::post('/update-profile/{id}', [User_ProfileController::class, 'updateProfile'])->name('update-profile');
-
-
-//============= edit Password =============//
+Route::post('/update-email/{id}', [User_ProfileController::class, 'updateEmail'])->name('update-email');
 Route::post('/update-password{id}', [User_ProfileController::class, 'updatePassword'])->name('update-password');
-
-
-//============= delete Account =============//
 Route::post('/delete-account{id}', [User_ProfileController::class, 'deleteAccount'])->name('delete-account');
-
-
-//============= reset-password =============//
 Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('reset-password');
 
 
