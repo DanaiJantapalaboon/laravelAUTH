@@ -25,15 +25,15 @@
             @csrf
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <label for="editFirstname" class="form-label">First name <span class="text-danger">*</span></label>
+                    <label for="editFirstname">First name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="editFirstname" id="editFirstname" value="{{ Auth::user()->firstname }}" required>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <label for="editLastname" class="form-label">Last name <span class="text-danger">*</span></label>
+                    <label for="editLastname">Last name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="editLastname" id="editLastname" value="{{ Auth::user()->lastname }}" required>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <label for="editPosition" class="form-label">Position <span class="text-danger">*</span></label>
+                    <label for="editPosition">Position <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="editPosition" id="editPosition" value="{{ Auth::user()->position }}" required>
                 </div>
             </div>
@@ -52,7 +52,7 @@
             @csrf
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="editEmail" class="form-label">Email <span class="text-danger">*</span></label>
+                    <label for="editEmail">Email <span class="text-danger">*</span></label>
                     <input type="email" class="form-control @error('emailError') is-invalid @enderror" name="editEmail" id="editEmail" value="{{ Auth::user()->email }}" required>
                     @error('emailError')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -77,22 +77,22 @@
         <form action="{{ route('update-password', Auth::user()->id) }}" method="POST">
             @csrf
             <div class="col-md-6 mb-3">
-                <label for="currentPassword" class="form-label">Current Password <span class="text-danger">*</span></label>
+                <label for="currentPassword">Current Password <span class="text-danger">*</span></label>
                 <input type="password" class="form-control @error('currentPassword') is-invalid @enderror" name="currentPassword" id="currentPassword">
                 @error('currentPassword')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
             <div class="col-md-6 mb-3">
-                <label for="newPassword" class="form-label">New Password <span class="text-danger">*</span></label>
-                <input type="password" class="form-control @error('newPassword') is-invalid @enderror" name="newPassword" id="newPassword">
+                <label for="newPassword">New Password <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" name="newPassword" id="newPassword">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="confirmPassword">Confirm Password <span class="text-danger">*</span></label>
+                <input type="password" class="form-control @error('newPassword') is-invalid @enderror" name="newPassword_confirmation" id="confirmPassword">
                 @error('newPassword')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="confirmPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
-                <input type="password" class="form-control" name="newPassword_confirmation" id="confirmPassword">
             </div>
             <div class="col-md-2">
                 <button type="submit" class="btn btn-dark px-3 shadow-sm">SAVE</button>

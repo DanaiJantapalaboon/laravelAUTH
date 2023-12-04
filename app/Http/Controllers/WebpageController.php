@@ -17,7 +17,6 @@ class WebpageController extends BaseController
 
         // fetch all ไปแสดง carousel
         $carousel = Carousel::all();
-
         return view('index', compact('pageTitle', 'companyName', 'companyLogo', 'carousel'));
     }
 }

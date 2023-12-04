@@ -21,47 +21,53 @@
     {{-- ============= 1. Add User หน้า User Management ============= --}}
     <div class="container shadow-sm rounded bg-light p-4 mt-4">
         <p><span class="fw-bold">Add User's Account</span><br><span class="text-secondary">Add user account's information and email address.</span></p>
-        @if(session('error'))
+        {{-- @if(session('error'))
             <div class="alert alert-danger text-danger text-center" role="alert">{{ session('error') }}</div>
-        @endif
+        @endif --}}
         <form action="{{ route('add-users') }}" method="POST">
             @csrf
             <div class="row">
                 <!-- Firstname input -->
                 <div class="col-md-4 mb-2">
                     <label for="firstname">First name <span class="text-danger">*</span></label>
-                    <input type="text" name="firstname" id="firstname" class="form-control" placeholder="..." required>
+                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder="..." required>
                 </div>
 
                 <!-- Lastname input -->
                 <div class="col-md-4 mb-2">
                     <label for="lastname">Last name <span class="text-danger">*</span></label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" placeholder="..." required>
+                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="..." required>
                 </div>
 
                 <!-- Position input -->
                 <div class="col-md-4 mb-2">
                     <label for="position">Position <span class="text-danger">*</span></label>
-                    <input type="text" name="position" id="position" class="form-control" placeholder="..." required>
+                    <input type="text" class="form-control" name="position" id="position" placeholder="..." required>
                 </div>
             </div>
             <div class="row">
                 <!-- Email input -->
                 <div class="col-md-4 mb-3">
                     <label for="email">Email <span class="text-danger">*</span></label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="..." required>
+                    <input type="email" class="form-control @error('emailError') is-invalid @enderror" name="email" id="email" placeholder="..." required>
+                    @error('emailError')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <!-- Password input -->
                 <div class="col-md-4 mb-3">
-                    <label for="password">Password <span class="text-danger">*</span></label>
-                    <input type="password" name="password" id="password" class="form-control" min="4" placeholder="..." required>
+                    <label for="newPassword">New Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" name="newPassword" id="newPassword">
                 </div>
 
                 <!-- Password input -->
                 <div class="col-md-4 mb-3">
-                    <label for="password_confirmation">Confirm Password <span class="text-danger">*</span></label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" min="4" placeholder="..." required>
+                    <label for="confirmPassword">Confirm Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control @error('newPassword') is-invalid @enderror" name="newPassword_confirmation" id="confirmPassword">
+                    @error('newPassword')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
 
@@ -139,7 +145,7 @@
                                         <div class="mb-0 mt-2">
                                             <label for="editEmail">Email</label>
                                             <input type="email" class="form-control" id="editEmail" aria-describedby="emailHelp" value="{{ $all_user->email }}" disabled>
-                                            <small id="emailHelp" class="form-text text-muted">To change an email, Please logged in to this account to proceed.</small>
+                                            <small id="emailHelp" class="form-text text-muted">To change an email, Please logged into this account to proceed.</small>
                                         </div>
                                     </div>
                                     <div class="modal-footer">

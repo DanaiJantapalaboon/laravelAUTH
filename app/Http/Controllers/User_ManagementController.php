@@ -16,16 +16,16 @@ class User_ManagementController extends Controller
     {
 
         // เช็ค password_confirmation ก่อนเลยจ้า ถ้าหลังจาก $request->validate() แล้วจะไม่ทำงาน
-        if ($request->password !== $request->password_confirmation) {
-            return back()->with('error', 'The password confirmation does not match, Please try again.');
-        }
+        // if ($request->password !== $request->password_confirmation) {
+        //     return back()->with('error', 'The password confirmation does not match, Please try again.');
+        // }
 
         $request->validate([
             'firstname' => 'required|string',
             'lastname' => 'required|string',
             'position' => 'required|string',
             'email' => 'required|email',
-            'password' => 'required|min:4|confirmed'
+            'newPassword' => 'required|confirmed|min:4'
         ]);
 
         try {
@@ -35,11 +35,14 @@ class User_ManagementController extends Controller
             $user->lastname = $request->lastname;
             $user->position = $request->position;
             $user->email = $request->email;
-            $user->password = Hash::make($request->password);
+            $user->password = Hash::make($request->newPassword);
             $user->save();
 
+            return back();
+
         } catch (QueryException) {
-            return back()->with('error', 'This email has already registered, Please try a difference email.');
+            return back()->withErrors(['emailError' => 'This email has already registered, Please try a difference email.']);
+
         }
 
         // check email ซ้ำ จ้าา
