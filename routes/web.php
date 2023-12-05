@@ -22,13 +22,11 @@ use App\Http\Controllers\Webpage_CarouselController;
 |
 */
 
-//============= Homepage หน้าแรก =============//
-Route::get('/', function () {
-    return view('index');
-});
 
-
-//============= check ถ้าไม่มีการ login =============//
+//============= 1. หมวด Authenticate =============//
+//============= 1.1 forgot password =============//
+Route::patch('/reset-password', [AuthController::class, 'resetPassword'])->name('reset-password');  // reset password modal
+//============= 1.2 check ถ้าไม่มีการ login =============//
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/admin', [AuthController::class, 'login'])->name('login');                          // ถ้ามีการกรอก url/admin แล้วยังไม่ login
     Route::get('/auth/register', [AuthController::class, 'register'])->name('register');            // route มาที่หน้า register.blade.php
@@ -36,17 +34,13 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
     Route::post('/auth/login', [AuthController::class, 'authenticate'])->name('login');
 });
-
-
-//============= check ถ้ามีการ login =============//
+//============= 1.3 check ถ้ามีการ login =============//
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', [AdminController::class, 'home']);                                         // ถ้ามีการกรอก url/admin แต่ login แล้ว
     Route::get('/admin/home', [AdminController::class, 'home']);
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-
-
-//============= check login ถ้าถูกไปหน้า Home =============//
+//============= 1.4 check login ถ้าถูกไปหน้า Home =============//
 Route::get('/auth', function () {
     if (Auth::check()) {
         return redirect('/admin/home');
@@ -55,20 +49,20 @@ Route::get('/auth', function () {
 });
 
 
-//============= หน้า My Profile =============//
-Route::post('/update-profile/{id}', [User_ProfileController::class, 'updateProfile'])->name('update-profile');
-Route::post('/update-email/{id}', [User_ProfileController::class, 'updateEmail'])->name('update-email');
-Route::post('/update-password{id}', [User_ProfileController::class, 'updatePassword'])->name('update-password');
-Route::post('/delete-account{id}', [User_ProfileController::class, 'deleteAccount'])->name('delete-account');
-Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('reset-password');
-
-
-//============= navbar link =============//
+//============= 2. หมวดหน้า Admin =============//
+//============= 2.1 navbar link =============//
 Route::get('/home', [AdminController::class, 'home'])->name('home');
 Route::get('/web_carousel', [AdminController::class, 'web_carousel'])->name('web_carousel');
 Route::get('/company_info', [AdminController::class, 'company_info'])->name('company_info');
 Route::get('/user_profile', [AdminController::class, 'user_profile'])->name('user_profile');
 Route::get('/user_management', [AdminController::class, 'user_management'])->name('user_management');
+//============= หน้า My Profile =============//
+Route::patch('/update-profile/{id}', [User_ProfileController::class, 'updateProfile'])->name('update-profile');
+Route::patch('/update-email/{id}', [User_ProfileController::class, 'updateEmail'])->name('update-email');
+Route::patch('/update-password{id}', [User_ProfileController::class, 'updatePassword'])->name('update-password');
+Route::delete('/delete-account{id}', [User_ProfileController::class, 'deleteAccount'])->name('delete-account');
+
+
 
 
 //============= หน้า carousel =============//
@@ -79,13 +73,13 @@ Route::delete('/delete-carousel/{id}', [Webpage_CarouselController::class, 'dele
 
 //============= หน้า user_management =============//
 Route::post('/add-users', [User_ManagementController::class, 'addUsers'])->name('add-users');
-Route::post('/edit-users/{id}', [User_ManagementController::class, 'editUsers'])->name('edit-users');
+Route::patch('/edit-users/{id}', [User_ManagementController::class, 'editUsers'])->name('edit-users');
 Route::delete('/delete-users/{id}', [User_ManagementController::class, 'deleteUsers'])->name('delete-users');
 
 
 //============= หน้า company_info =============//
-Route::post('/edit-company', [Company_ProfileController::class, 'editCompany'])->name('edit-company');
-Route::post('/upload-logo', [Company_ProfileController::class, 'uploadLogo'])->name('upload-logo');
+Route::patch('/edit-company', [Company_ProfileController::class, 'editCompany'])->name('edit-company');
+Route::patch('/upload-logo', [Company_ProfileController::class, 'uploadLogo'])->name('upload-logo');
 
 
 //============= หน้าหลัก index =============//

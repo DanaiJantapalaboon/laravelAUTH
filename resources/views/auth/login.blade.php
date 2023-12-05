@@ -98,6 +98,7 @@
                     <div class="text-center"><img class="mb-3" src="{{ asset('icons/unlock.png') }}" alt="" width="180"></div>
                         <form action="{{ route('reset-password') }}" method="POST">
                             @csrf
+                            @method('PATCH')
                             <div class="mb-0">
                                 <input type="email" name="email" class="form-control" placeholder="Email" required>
                             </div>

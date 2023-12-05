@@ -23,6 +23,7 @@
         <p><span class="fw-bold">1. Profile Information</span><br><span class="text-secondary">Update your account's profile information.</span></p>
         <form action="{{ route('update-profile', Auth::user()->id) }}" method="POST">
             @csrf
+            @method('PATCH')
             <div class="row">
                 <div class="col-md-3 mb-3">
                     <label for="editFirstname">First name <span class="text-danger">*</span></label>
@@ -50,6 +51,7 @@
         <p><span class="fw-bold">2. Change Email</span><br><span class="text-secondary">Update or change of your email address.</span></p>
         <form action="{{ route('update-email', Auth::user()->id) }}" method="POST">
             @csrf
+            @method('PATCH')
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="editEmail">Email <span class="text-danger">*</span></label>
@@ -71,11 +73,14 @@
     {{-- ============= 3. update password หน้า Profile ============= --}}
     <div class="container shadow-sm rounded bg-light p-4 mt-4">
         <p><span class="fw-bold">3. Update Password</span><br><span class="text-secondary">Ensure your account is using a long, random password to stay secure.</span></p>
-        @if(session('success'))
-            <div class="alert alert-success text-success text-center">{{ session('success') }}</div>
-        @endif
+        <div class="col-md-6">
+            @if(session('success'))
+                <div class="alert alert-success text-success text-center">{{ session('success') }}</div>
+            @endif
+        </div>
         <form action="{{ route('update-password', Auth::user()->id) }}" method="POST">
             @csrf
+            @method('PATCH')
             <div class="col-md-6 mb-3">
                 <label for="currentPassword">Current Password <span class="text-danger">*</span></label>
                 <input type="password" class="form-control @error('currentPassword') is-invalid @enderror" name="currentPassword" id="currentPassword">
@@ -104,11 +109,11 @@
 
     {{-- ============= 4. delete account หน้า Profile ============= --}}
     <div class="container shadow-sm rounded bg-light p-4 mt-4 mb-4">
+        <p><span class="fw-bold">4. Delete Account</span><br><span class="text-secondary">Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.</span></p>
         <div class="col-md-6">
             @if(session('passwordIncorrect'))
                 <div class="alert alert-danger text-center text-danger">{{ session('passwordIncorrect') }}</div>
             @endif
-            <p><span class="fw-bold">4. Delete Account</span><br><span class="text-secondary">Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.</span></p>
         </div>
         <button type="submit" class="btn btn-danger px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">DELETE ACCOUNT</button>
     </div>
@@ -117,6 +122,7 @@
             <div class="modal-content">
                 <form action="{{ route('delete-account', Auth::user()->id) }}" method="POST">
                     @csrf
+                    @method('DELETE')
                     <div class="modal-body p-4">
                         <p><span class="fw-bold">Are you sure you want to delete your account ?</span><br><span class="text-secondary">Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.</span></p>
                         <div class="col-md-8">

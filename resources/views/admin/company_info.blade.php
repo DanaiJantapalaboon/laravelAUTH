@@ -18,11 +18,12 @@
     </div>
 
 
-    {{-- ============= 1. Add User หน้า User Management ============= --}}
+    {{-- ============= 1. Update Company Info ============= --}}
     <div class="container shadow-sm rounded bg-light p-4 mt-4 mb-4">
         <p><span class="fw-bold">Edit Your Company Information</span><br><span class="text-secondary">To update your company information please proceed the setup, The information will be used to display on company webpage.</span></p>
         <form action="{{ route('edit-company') }}" method="POST">
             @csrf
+            @method('PATCH')
             <div class="row">
                 <!-- Company Name -->
                 <div class="col-md-8 mb-2">
@@ -82,11 +83,12 @@
     </div>
 
 
-    {{-- ============= 2. Upload Company Logo หน้า User Management ============= --}}
+    {{-- ============= 2. Upload Company Logo ============= --}}
     <div class="container shadow-sm rounded bg-light p-4 mt-4 mb-4">
         <p><span class="fw-bold">Upload Your Company Logo</span><br><span class="text-secondary">To update or upload your new company logo, The logo will show on all pages of your website.</span></p>
         <form action="{{ route('upload-logo') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PATCH')
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <input type="file" class="form-control" name="uploadLogo" accept=".jpeg, .jpg, .png, .gif" required>

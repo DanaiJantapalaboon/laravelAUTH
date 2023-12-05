@@ -129,6 +129,7 @@
                                 </div>
                                 <form action="{{ route('edit-users', $all_user->id) }}" method="POST">
                                     @csrf
+                                    @method('PATCH')
                                     <div class="modal-body">
                                         <div class="mb-0">
                                             <label for="editFirstname">Firstname <span class="text-danger"> *</span></label>
