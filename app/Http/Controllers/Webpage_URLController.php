@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carousel;
 use Illuminate\Http\Request;
 
-class WebpageController extends BaseController
+class Webpage_URLController extends BaseController
 {
 
     //============= 1. ไปหน้า index =============//

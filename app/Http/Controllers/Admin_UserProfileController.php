@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
 
-class User_ProfileController extends Controller
+class Admin_UserProfileController extends Controller
 {
 
     //============= 1. update my_profile หน้า user_profile =============//

@@ -7,7 +7,7 @@ use App\Models\CompanyInfo;
 use App\Models\Carousel;
 use App\Models\User;
 
-class AdminController extends BaseController
+class Admin_URLController extends BaseController
 {
 
     //============= 1. Link ส่งค่าไปหน้า home.blade.php =============//

@@ -43,10 +43,8 @@ class AuthController extends BaseController
 
         // เก็บ remember_token ถ้า checkbox name="remember" เช็คอยู่
         $remember = $request->has('remember');
- 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
- 
             return redirect()->intended('/admin/home');
         }
  

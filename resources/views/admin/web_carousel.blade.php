@@ -114,6 +114,7 @@
                                 </div>
                                 <form action="{{ route('edit-carousel', $all_carousel->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    @method('PATCH')
                                     <div class="modal-body">
 
                                         <!-- Input Title -->

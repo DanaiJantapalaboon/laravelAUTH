@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
 
-class User_ManagementController extends Controller
+class Admin_UserManagementController extends Controller
 {
 
     //============= 1. Add New Users รับมาจากหน้า User Management =============//

@@ -6,7 +6,7 @@ use App\Models\Carousel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class Webpage_CarouselController extends Controller
+class Admin_CarouselController extends Controller
 {
 
     //============= 1. Add Carousel รับมาจากหน้า Carousel =============//
