@@ -9,9 +9,9 @@
             height: 512px;
         }
         .carousel-indicators [data-bs-target] {
-            width: 10px;
-            height: 10px;
-            border-radius: 100%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
         }
     </style>
 </head>
