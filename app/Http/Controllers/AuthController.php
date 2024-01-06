@@ -48,7 +48,7 @@ class AuthController extends BaseController
             return redirect()->intended('/admin/home');
         }
  
-        return back()->with('error', 'Email or password incorrect, Please try again.');
+        return back()->withErrors(['loginError' => 'Your login incorrected, Please try again.']);
     }
 
     

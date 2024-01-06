@@ -40,10 +40,6 @@
                         <div class="alert alert-success text-center text-success" role="alert">{{ Session::get('success') }}</div>
                     @endif
 
-                    @if(Session::has('error'))
-                        <div class="alert alert-danger text-center text-danger" role="alert">{{ Session::get('error') }}</div>
-                    @endif
-
                     @if(session('accountDeleted'))
                         <div class="alert alert-danger text-center text-danger" role="alert">{{ session('accountDeleted') }}</div>
                     @endif
@@ -54,12 +50,15 @@
 
                         <!-- Email input -->
                         <div class="mb-2">
-                            <input type="email" name="email" class="form-control" placeholder="Email address" required>
+                            <input type="email" name="email" class="form-control form-control @error('loginError') is-invalid @enderror" placeholder="Email address" required>
                         </div>
 
                         <!-- Password input -->
                         <div class="mb-3">
-                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                            <input type="password" name="password" class="form-control @error('loginError') is-invalid @enderror" placeholder="Password" required>
+                            @error('loginError')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <!-- Remember me & Forgot Password -->
