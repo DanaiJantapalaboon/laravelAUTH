@@ -11,10 +11,12 @@
             height: 1px;
             background: #eee;
         }
+
         .h-custom {
             height: calc(100% - 0px);
         }
-        @media (max-width: 450px) {
+        
+        @media (max-width: 480px) {
             .h-custom {
                 height: 100%;
             }
@@ -22,9 +24,9 @@
     </style>
 
 </head>
-<body>
+<body class="admin-bg">
 
-    <section class="vh-100" id="admin_bg">
+    <section class="vh-100">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-8 border rounded p-4 bg-light">

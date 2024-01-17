@@ -1,0 +1,14 @@
+:root {
+    --admin-bg: rgb(230, 230, 230);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+}
+
+.admin-bg {
+    background-color: var(--admin-bg);
+}

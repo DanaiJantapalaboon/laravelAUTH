@@ -4,7 +4,7 @@
         <title>{{ $pageTitle }}</title>
         @include('admin.dependency.cdn')
     </head>
-<body id="admin_bg">
+<body class="admin-bg">
 
     <header>
         @include('admin.includes.navbar')

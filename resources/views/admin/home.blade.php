@@ -6,27 +6,18 @@
     </head>
 
     <style>
-        .row a {
+        .menu-row a {
             text-decoration: none;
             color: #000;
-        }
 
-        .row a:hover {
-            color: #000;
-        }
-
-        .card {
-            transition: transform .3s;
-        }
-
-        .card:hover {
-          background-color: honeydew;
-          transform: scale(1.05);
+            & .menu-button:hover {
+                background-color: honeydew;
+            }
         }
     </style>
 
 
-<body id="admin_bg">
+<body class="admin-bg">
     <header>
         @include('admin.includes.navbar')
     </header>
@@ -51,10 +42,10 @@
 
     {{-- Cards --}}
     <div class="container mt-4 mb-4">
-        <div class="row">
+        <div class="menu-row row">
             <div class="col-xl-4 col-md-6 mb-3">
                 <a href="{{ route('web_carousel') }}">
-                    <div class="card shadow-sm h-100 py-2">
+                    <div class="menu-button card shadow-sm h-100 py-2">
                         <div class="card-body px-5">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
@@ -69,7 +60,7 @@
             </div>
             <div class="col-xl-4 col-md-6 mb-3">
                 <a href="{{ route('user_management') }}">
-                    <div class="card shadow-sm h-100 py-2">
+                    <div class="menu-button card shadow-sm h-100 py-2">
                         <div class="card-body px-5">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
@@ -84,12 +75,6 @@
             </div>
         </div>
     </div>
-
-    {{-- @if (Auth::viaRemember())
-    <p>Welcome back! You are logged in via "Remember Me".</p>
-@else
-    <p>Welcome! You are logged in normally.</p>
-@endif --}}
 
     {{-- ============= <script></script> tag below code ============= --}}
     @include('admin.includes.scripttag_below')

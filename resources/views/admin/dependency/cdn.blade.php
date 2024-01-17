@@ -17,6 +17,7 @@
 <!-- ======= DataTables CDN ======= -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
+
 <script>
     $(document).ready( function () {
         $('#myTable').DataTable();
@@ -33,6 +34,7 @@
 </style>
 <!-- ======= End DataTables CDN ======= -->
 
+
 <!-- ======= Google Fonts ======= -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +42,7 @@
 
 
 <!-- ======= Custom CSS ======= -->
-<!-- ======= Bootstrap5 Color ======= -->
+<!-- ======= Custom Bootstrap5 Color ======= -->
 <link rel="stylesheet" href="{{ asset('css/custom_bootstrap5_color.css') }}">
-<!-- ======= Style Google Fonts ======= -->
-<link rel="stylesheet" href="{{ asset('css/custom_fonts.css') }}">
+<!-- ======= Custom CSS ======= -->
+<link rel="stylesheet" href="{{ asset('css/custom_css.css') }}">

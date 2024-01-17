@@ -22,9 +22,9 @@
     </style>
 
 </head>
-<body>
+<body class="admin-bg">
 
-    <section class="vh-100" id="admin_bg">
+    <section class="vh-100">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-12 col-lg-6 col-xl-4 border rounded p-4 bg-light">

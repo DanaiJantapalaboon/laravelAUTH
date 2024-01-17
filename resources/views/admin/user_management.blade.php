@@ -4,7 +4,7 @@
         <title>{{ $pageTitle }}</title>
         @include('admin.dependency.cdn')
     </head>
-<body id="admin_bg">
+<body class="admin-bg">
 
     <header>
         @include('admin.includes.navbar')
@@ -21,9 +21,6 @@
     {{-- ============= 1. Add User หน้า User Management ============= --}}
     <div class="container shadow-sm rounded bg-light p-4 mt-4">
         <p><span class="fw-bold">Add User's Account</span><br><span class="text-secondary">Add user account's information and email address.</span></p>
-        {{-- @if(session('error'))
-            <div class="alert alert-danger text-danger text-center" role="alert">{{ session('error') }}</div>
-        @endif --}}
         <form action="{{ route('add-users') }}" method="POST">
             @csrf
             <div class="row">
@@ -79,7 +76,7 @@
 
 
     
-    {{-- ============= 2. User account table หน้า Profile ============= --}}
+    {{-- ============= 2. Edit User หน้า User Management ============= --}}
     <div class="container shadow-sm rounded bg-light p-4 mt-4 mb-4">
         <p><span class="fw-bold">User management table</span><br><span class="text-secondary">You can manages all user account's in this table.</span></p>
         @if(session('error_delete'))
@@ -187,12 +184,7 @@
                 @endforeach
             </tbody>
         </table>
-
     </div>
-
-
-
-
 
 
     {{-- ============= <script></script> tag below code ============= --}}
