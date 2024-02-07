@@ -6,10 +6,7 @@
     </head>
 <body class="admin-bg">
 
-    <header>
-        @include('admin.includes.navbar')
-    </header>
-
+    @include('admin.includes.navbar')
 
     <div class="container-fluid shadow-sm border-top bg-light">
         <div class="container">
@@ -25,20 +22,17 @@
             @csrf
             <div class="row">
                 <input type="hidden" name="addedby" value="{{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}" readonly>
-                <!-- Input Title -->
                 <div class="col-md-4 mb-2">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" name="title" id="title" maxlength="100" placeholder="...">
                 </div>
 
-                <!-- Input Description -->
                 <div class="col-md-8 mb-2">
                     <label for="description">Description</label>
                     <input type="text" class="form-control" name="description" id="description" maxlength="255" placeholder="...">
                 </div>
             </div>
             <div class="row">
-                <!-- Input Carousel -->
                 <div class="col-md-4 mb-3">
                     <label for="uploadCarousel">Upload Carousel (Recommended .jpeg, .jpg, .png, .gif, .webp) <span class="text-danger">*</span></label>
                     <input type="file" class="form-control" name="uploadCarousel" id="uploadCarousel" accept=".jpeg, .jpg, .png, .gif, .webp" required>
@@ -117,20 +111,17 @@
                                     @method('PATCH')
                                     <div class="modal-body">
 
-                                        <!-- Input Title -->
                                         <div class="mb-0">
                                             <input type="hidden" name="editedby" value="{{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}" readonly>
                                             <label for="editTitle">Title</label>
                                             <input type="text" class="form-control" name="editTitle" id="editTitle" value="{{ $all_carousel->title }}" placeholder="...">
                                         </div>
 
-                                        <!-- Edit Description -->
                                         <div class="mb-0 mt-2">
                                             <label for="editDescription">Description</label>
                                             <input type="text" class="form-control" name="editDescription" id="editDescription" value="{{ $all_carousel->description }}" placeholder="...">
                                         </div>
 
-                                        <!-- Edit Carousel -->
                                         <div class="mb-0 mt-2">
                                             <label for="editCarousel">Upload Carousel (Recommended .jpeg, .jpg, .png, .gif, .webp)</label>
                                             <input type="file" class="form-control" name="editCarousel" id="editCarousel" accept=".jpeg, .jpg, .png, .gif, .webp">
@@ -174,15 +165,10 @@
                 @endforeach
             </tbody>
         </table>
-
     </div>
 
 
-
-    {{-- ============= <script></script> tag below code ============= --}}
-    @include('admin.includes.scripttag_below')
-
-    {{-- ============= Footer Copyright ============= --}}
+    @include('admin.includes.pagescript')
     @include('admin.includes.footer')
 
 

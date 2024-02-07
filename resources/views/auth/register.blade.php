@@ -49,19 +49,16 @@
                         @endif
 
                         <div class="row">
-                            <!-- Firstname input -->
                             <div class="col-md-4 mb-2">
                                 <label for="firstname">First name <span class="text-danger">*</span></label>
                                 <input type="text" name="firstname" id="firstname" class="form-control" placeholder="..." required>
                             </div>
 
-                            <!-- Lastname input -->
                             <div class="col-md-4 mb-2">
                                 <label for="lastname">Last name <span class="text-danger">*</span></label>
                                 <input type="text" name="lastname" id="lastname" class="form-control" placeholder="..." required>
                             </div>
 
-                            <!-- Position input -->
                             <div class="col-md-4 mb-2">
                                 <label for="position">Position <span class="text-danger">*</span></label>
                                 <input type="text" name="position" id="position" class="form-control" placeholder="..." required>
@@ -69,33 +66,30 @@
                         </div>
 
                         <div class="row">
-                            <!-- Email input -->
                             <div class="col-md-4 mb-2">
                                 <label for="email">Email <span class="text-danger">*</span></label>
                                 <input type="email" name="email" id="email" class="form-control" placeholder="..." required>
                             </div>
 
-                            <!-- Password input -->
                             <div class="col-md-4 mb-2">
                                 <label for="password">Password <span class="text-danger">*</span></label>
                                 <input type="password" name="password" id="password" class="form-control" min="4" placeholder="..." required>
                             </div>
 
-                            <!-- Password input -->
                             <div class="col-md-4 mb-2">
                                 <label for="password_confirmation">Confirm Password <span class="text-danger">*</span></label>
                                 <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" min="4" placeholder="..." required>
                             </div>
                         </div>
 
-                        <!-- Login & Register Button -->
                         <div class="text-center text-lg-start pt-2">
                             <button type="submit" class="btn btn-primary btn-lg shadow-sm w-100">Register</button>
                             <p class="small fw-bold mt-2 pt-1 mb-0">Already an account? <a href="{{ route('login') }}" class="link-primary">Login</a></p>
                         </div>
                     </form>
                 </div>
-                {{-- ============= Footer Copyright ============= --}}
+
+                
                 @include('admin.includes.footer')
             </div>
         </div>

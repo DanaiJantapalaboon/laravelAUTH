@@ -44,16 +44,12 @@
                         <div class="alert alert-danger text-center text-danger" role="alert">{{ session('accountDeleted') }}</div>
                     @endif
 
-                    <!-- Login Form -->
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
-
-                        <!-- Email input -->
                         <div class="mb-2">
                             <input type="email" name="email" class="form-control form-control @error('loginError') is-invalid @enderror" placeholder="Email address" required>
                         </div>
 
-                        <!-- Password input -->
                         <div class="mb-3">
                             <input type="password" name="password" class="form-control @error('loginError') is-invalid @enderror" placeholder="Password" required>
                             @error('loginError')
@@ -61,7 +57,6 @@
                             @enderror
                         </div>
 
-                        <!-- Remember me & Forgot Password -->
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="form-check mb-0">
                                 <input class="form-check-input me-2" type="checkbox" name="remember" id="form2Example3">
@@ -70,14 +65,12 @@
                             <a href="#" class="text-body" data-bs-toggle="modal" data-bs-target="#exampleModal">Forgot password?</a>
                         </div>
 
-                        <!-- Login & Register Button -->
                         <div class="text-center text-lg-start mt-2 pt-2">
                             <button type="submit" class="btn btn-primary btn-lg shadow-sm w-100">Login</button>
                             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{ route('register') }}" class="link-danger">Register</a></p>
                         </div>
                     </form>
                 </div>
-                {{-- ============= Footer Copyright ============= --}}
                 @include('admin.includes.footer')
             </div>
         </div>

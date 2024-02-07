@@ -6,11 +6,9 @@
     </head>
 <body class="admin-bg">
 
-    <header>
-        @include('admin.includes.navbar')
-    </header>
+    @include('admin.includes.navbar')
 
-
+    
     <div class="container-fluid shadow-sm border-top bg-light">
         <div class="container">
             <h5 class="fw-bold py-3">{{ $pageTitle }}</h5>
@@ -25,52 +23,44 @@
             @csrf
             @method('PATCH')
             <div class="row">
-                <!-- Company Name -->
                 <div class="col-md-8 mb-2">
                     <label for="companyname">Company name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="companyname" id="companyname" maxlength="100" value="{{ $CompanyInfo->name }}" placeholder="..." required>
                 </div>
 
-                <!-- Company Email -->
                 <div class="col-md-4 mb-2">
                     <label for="companyemail">Company Email / Business Email <span class="text-danger">*</span></label>
                     <input type="email" class="form-control" name="companyemail" id="companyemail" maxlength="100" value="{{ $CompanyInfo->email }}" placeholder="..." required>
                 </div>
             </div>
             <div class="row">
-                <!-- Company Address -->
                 <div class="col-md-8 mb-2">
                     <label for="companyaddress">Address <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="companyaddress" id="companyaddress" maxlength="255" value="{{ $CompanyInfo->address }}" placeholder="..." required>
                 </div>
 
-                <!-- Company TaxID -->
                 <div class="col-md-4 mb-2">
                     <label for="companytaxid">Tax ID <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="companytaxid" id="companytaxid" maxlength="13" value="{{ $CompanyInfo->taxid }}" placeholder="..." required>
                 </div>
             </div>
             <div class="row">
-                <!-- About Company -->
                 <div class="col-md-12 mb-2">
                     <label for="companyabout">About Company <span class="text-danger">*</span></label>
                     <textarea class="form-control" name="companyabout" id="companyabout" rows="4" placeholder="..." required>{{ $CompanyInfo->about }}</textarea>
                 </div>
             </div>
             <div class="row">
-                <!-- Company Phone1 -->
                 <div class="col-md-4 mb-3">
                     <label for="companyphone1">Phone 1 <span class="text-danger">*</span></label>
                     <input type="tel" class="form-control" name="companyphone1" id="companyphone1" maxlength="10" value="{{ $CompanyInfo->tel_1 }}" placeholder="..." required>
                 </div>
 
-                <!-- Company Phone2 (optional) -->
                 <div class="col-md-4 mb-3">
                     <label for="companyphone2">Phone 2 (Optional)</label>
                     <input type="tel" class="form-control" name="companyphone2" id="companyphone2" maxlength="10" value="{{ $CompanyInfo->tel_2 }}" placeholder="...">
                 </div>
 
-                <!-- Company fax (optional) -->
                 <div class="col-md-4 mb-3">
                     <label for="companyfax">Fax (Optional)</label>
                     <input type="tel" class="form-control" name="companyfax" id="companyfax" maxlength="10" value="{{ $CompanyInfo->fax }}" placeholder="...">
@@ -100,14 +90,8 @@
         </form>
     </div>
 
-
-
-    {{-- ============= <script></script> tag below code ============= --}}
-    @include('admin.includes.scripttag_below')
-
-    {{-- ============= Footer Copyright ============= --}}
+    @include('admin.includes.pagescript')
     @include('admin.includes.footer')
-
 
 </body>
 </html>

@@ -6,9 +6,7 @@
     </head>
 <body class="admin-bg">
 
-    <header>
-        @include('admin.includes.navbar')
-    </header>
+    @include('admin.includes.navbar')
 
 
     <div class="container-fluid shadow-sm border-top bg-light">
@@ -24,26 +22,22 @@
         <form action="{{ route('add-users') }}" method="POST">
             @csrf
             <div class="row">
-                <!-- Firstname input -->
                 <div class="col-md-4 mb-2">
                     <label for="firstname">First name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="firstname" id="firstname" placeholder="..." required>
                 </div>
 
-                <!-- Lastname input -->
                 <div class="col-md-4 mb-2">
                     <label for="lastname">Last name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="lastname" id="lastname" placeholder="..." required>
                 </div>
 
-                <!-- Position input -->
                 <div class="col-md-4 mb-2">
                     <label for="position">Position <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="position" id="position" placeholder="..." required>
                 </div>
             </div>
             <div class="row">
-                <!-- Email input -->
                 <div class="col-md-4 mb-3">
                     <label for="email">Email <span class="text-danger">*</span></label>
                     <input type="email" class="form-control @error('emailError') is-invalid @enderror" name="email" id="email" placeholder="..." required>
@@ -52,13 +46,11 @@
                     @enderror
                 </div>
 
-                <!-- Password input -->
                 <div class="col-md-4 mb-3">
                     <label for="newPassword">New Password <span class="text-danger">*</span></label>
                     <input type="password" class="form-control" name="newPassword" id="newPassword">
                 </div>
 
-                <!-- Password input -->
                 <div class="col-md-4 mb-3">
                     <label for="confirmPassword">Confirm Password <span class="text-danger">*</span></label>
                     <input type="password" class="form-control @error('newPassword') is-invalid @enderror" name="newPassword_confirmation" id="confirmPassword">
@@ -187,10 +179,7 @@
     </div>
 
 
-    {{-- ============= <script></script> tag below code ============= --}}
-    @include('admin.includes.scripttag_below')
-
-    {{-- ============= Footer Copyright ============= --}}
+    @include('admin.includes.pagescript')
     @include('admin.includes.footer')
 
 

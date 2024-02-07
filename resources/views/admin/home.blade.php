@@ -16,11 +16,9 @@
         }
     </style>
 
-
 <body class="admin-bg">
-    <header>
-        @include('admin.includes.navbar')
-    </header>
+    
+    @include('admin.includes.navbar')
 
 
     <div class="container-fluid shadow-sm border-top bg-light">
@@ -76,12 +74,8 @@
         </div>
     </div>
 
-    {{-- ============= <script></script> tag below code ============= --}}
-    @include('admin.includes.scripttag_below')
-
-    {{-- ============= Footer Copyright ============= --}}
+    @include('admin.includes.pagescript')
     @include('admin.includes.footer')
-
 
 </body>
 </html>
