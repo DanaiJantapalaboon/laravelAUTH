@@ -73,12 +73,15 @@
 
                             <div class="col-md-4 mb-2">
                                 <label for="password">Password <span class="text-danger">*</span></label>
-                                <input type="password" name="password" id="password" class="form-control" min="4" placeholder="..." required>
+                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" min="4" placeholder="..." required>
                             </div>
 
                             <div class="col-md-4 mb-2">
-                                <label for="password_confirmation">Confirm Password <span class="text-danger">*</span></label>
-                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" min="4" placeholder="..." required>
+                                <label for="password">Confirm Password <span class="text-danger">*</span></label>
+                                <input type="password" name="password_confirmation" id="password" class="form-control @error('password') is-invalid @enderror" min="4" placeholder="..." required>
+                                @error('password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 

@@ -46,8 +46,7 @@ class Admin_CompanyInfoController extends Controller
 
         // Update the first row in the 'companyinfo' table with the new logo path
         $company = CompanyInfo::first();
-
-        // ถ้ามี logo อยู่แล้วให้ลบออกแล้ว update ใหม่
+        
         if ($company->logo) {
             Storage::disk('public')->delete($company->logo);
         }

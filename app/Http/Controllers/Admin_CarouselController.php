@@ -61,7 +61,6 @@ class Admin_CarouselController extends Controller
     {
         $carousel = Carousel::find($id);
 
-        // unlink image and delete from db
         Storage::disk('public')->delete($carousel->image);
         $carousel->delete();
         return back();

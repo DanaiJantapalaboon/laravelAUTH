@@ -56,11 +56,6 @@ class AuthController extends BaseController
     public function registerAccount(Request $request)
     {
 
-        // เช็ค password_confirmation ก่อนเลยจ้า ถ้าหลังจาก $request->validate() แล้วจะไม่ทำงาน
-        if ($request->password !== $request->password_confirmation) {
-            return back()->with('error', 'The password confirmation does not match, Please try again.');
-        }
-
         $request->validate([
             'firstname' => 'required|string',
             'lastname' => 'required|string',
@@ -87,25 +82,6 @@ class AuthController extends BaseController
             return back()->with('error', 'This email has already registered, Please try a difference email.');
 
         }
-
-        // ในกรณีที่ต้องการ check where ก่อนแล้ว return error
-        // $user = User::where('email', $request->email)->first();
-
-        // if ($user) {
-        //     return back()->with('error', 'This email has already registered, Please try a difference email.');
-
-        // } else {
-        //     $user = new User();
-    
-        //     $user->firstname = $request->firstname;
-        //     $user->lastname = $request->lastname;
-        //     $user->position = $request->position;
-        //     $user->email = $request->email;
-        //     $user->password = Hash::make($request->password);
-        //     $user->save();
-
-        //     return back()->with('success', 'Account created successfully, Please ');
-        // }
     }
 
 

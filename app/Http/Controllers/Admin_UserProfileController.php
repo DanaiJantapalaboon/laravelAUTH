@@ -54,7 +54,7 @@ class Admin_UserProfileController extends Controller
     public function updatePassword(Request $request, $id)
     {
         $request->validate([
-            'currentPassword' => 'required',
+            'currentPassword' => 'required|min:4',
             'newPassword' => 'required|confirmed|min:4'
         ]);
     
